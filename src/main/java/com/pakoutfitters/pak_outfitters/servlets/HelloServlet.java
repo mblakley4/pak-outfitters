@@ -1,4 +1,4 @@
-package com.pakoutfitters.pak_outfitters;
+package com.pakoutfitters.pak_outfitters.servlets;
 
 import java.io.*;
 import javax.servlet.http.*;
