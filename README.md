@@ -16,6 +16,7 @@ JSP Documents
 - RentalForm
 - ReturnForm
 - RatingForm
+- Header
 
 ### Controllers:
 Java Servlets
