@@ -19,3 +19,9 @@ JSP Documents
 
 ### Controllers:
 Java Servlets
+- GetEquipmentServlet
+- GetItemServlet
+- GetRentedEquipmentServlet
+- RentItemServlet
+- ReturnItemServlet
+- SubmitRatingServlet
