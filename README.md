@@ -10,7 +10,8 @@ Business Objects
 
 ### Views:
 JSP Documents
-- Home
+- Index
+- AvailableEqiupment
 - RentedEquipment
 - Item
 - RentalForm

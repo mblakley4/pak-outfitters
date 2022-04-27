@@ -5,15 +5,16 @@
     <title>PAK Outfitters</title>
     <link rel="stylesheet" href="styles/main.css" type="text/css" />
 </head>
+<body>
 
 <header>
     <h1><%= "PAK Outfitters" %></h1>
     <nav>
         <ul>
-            <li><a href="home.jsp">Home</a></li>
-            <li><a href="rented_equipment.jsp">Rented Equipment</a></li>
+            <li><a href="equipment">Available</a></li>
+            <li><a href="rentedEquipment.jsp">Rented</a></li>
         </ul>
     </nav>
 </header>
-<body>
-<br/>
+
+<section class="main">
