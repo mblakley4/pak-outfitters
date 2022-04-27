@@ -4,7 +4,7 @@
 
 <c:import url="/header.jsp"/>
 
-<a href="hello-servlet">Hello Servlet</a>
+<%--<a href="hello-servlet">Hello Servlet</a>--%>
 
 
 <c:import url="/footer.jsp"/>
