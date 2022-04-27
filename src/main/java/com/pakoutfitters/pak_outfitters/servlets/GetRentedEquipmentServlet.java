@@ -1,6 +1,6 @@
 package com.pakoutfitters.pak_outfitters.servlets;
 
-import com.pakoutfitters.pak_outfitters.models.EquipmentModel;
+import com.pakoutfitters.pak_outfitters.models.RentedEquipmentModel;
 import com.pakoutfitters.pak_outfitters.services.MySQLdb;
 
 import javax.servlet.*;
@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet(name = "GetEquipmentServlet", value = "/equipment")
-public class GetEquipmentServlet extends HttpServlet {
+@WebServlet(name = "GetRentedEquipmentServlet", value = "/rented")
+public class GetRentedEquipmentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
@@ -24,13 +24,13 @@ public class GetEquipmentServlet extends HttpServlet {
 
         if(session != null) {
             try {
-                List<EquipmentModel> equipmentList = db.getEquipment();
-                request.setAttribute("equipment_list", equipmentList);
+                List<RentedEquipmentModel> rentedEquipmentList = db.getRentedEquipment();
+                request.setAttribute("rented_equipment_list", rentedEquipmentList);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
 
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("availableEquipment.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("rentedEquipment.jsp");
             requestDispatcher.forward(request, response);
         }
     }

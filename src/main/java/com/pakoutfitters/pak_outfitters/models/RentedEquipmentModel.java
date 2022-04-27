@@ -4,25 +4,18 @@ public class RentedEquipmentModel {
 
     int rental_id;
     int equipment_id;
-    String date_rented;
-    String days_rented;
-    String date_returned;
-    Boolean returned;
+    String return_date;
+    String title;
+    String description;
+    String type;
 
-    public RentedEquipmentModel(
-            int rental_id,
-            int equipment_id,
-            String date_rented,
-            String days_rented,
-            String date_returned,
-            Boolean returned)
-    {
+    public RentedEquipmentModel(int rental_id, int equipment_id, String return_date, String title, String description, String type) {
         this.rental_id = rental_id;
         this.equipment_id = equipment_id;
-        this.date_rented = date_rented;
-        this.days_rented = days_rented;
-        this.date_returned = date_returned;
-        this.returned = returned;
+        this.return_date = return_date;
+        this.title = title;
+        this.description = description;
+        this.type = type;
     }
 
     public int getRental_id() {
@@ -41,35 +34,35 @@ public class RentedEquipmentModel {
         this.equipment_id = equipment_id;
     }
 
-    public String getDate_rented() {
-        return date_rented;
+    public String getReturn_date() {
+        return return_date;
     }
 
-    public void setDate_rented(String date_rented) {
-        this.date_rented = date_rented;
+    public void setReturn_date(String date_rented) {
+        this.return_date = date_rented;
     }
 
-    public String getDays_rented() {
-        return days_rented;
+    public String getTitle() {
+        return title;
     }
 
-    public void setDays_rented(String days_rented) {
-        this.days_rented = days_rented;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getDate_returned() {
-        return date_returned;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDate_returned(String date_returned) {
-        this.date_returned = date_returned;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Boolean getReturned() {
-        return returned;
+    public String getType() {
+        return type;
     }
 
-    public void setReturned(Boolean returned) {
-        this.returned = returned;
+    public void setType(String type) {
+        this.type = type;
     }
 }

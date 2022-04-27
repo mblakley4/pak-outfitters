@@ -4,7 +4,16 @@
 
 <c:import url="/header.jsp"/>
 
-<p>I'm the rented equipment page</p>
+<div class="cards-container">
+    <c:forEach var="item" items="${rented_equipment_list}">
+        <div class="card">
+            <h2 class="title">${item.getTitle()}</h2>
+            <img src="images/${item.getType()}.png" alt="equipment-image" class="pic" />
+            <p class="description">${item.getDescription()}</p>
+            <p class="return-date">Return Date: ${item.getReturn_date()}</p>
+        </div>
+    </c:forEach>
+</div>
 
 
 <c:import url="/footer.jsp"/>

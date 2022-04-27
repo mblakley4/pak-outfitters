@@ -15,15 +15,4 @@
 </c:forEach>
 </div>
 
-<%--<p>${message}</p>--%>
-
-<%--<%--%>
-<%--    } else {--%>
-<%--        RequestDispatcher requestDispatcher = request.getRequestDispatcher("availableEquipment.jsp");--%>
-<%--        request.setAttribute("error", "No session!!");--%>
-<%--        requestDispatcher.forward(request, response);--%>
-<%--    }--%>
-<%--%>--%>
-
-
 <c:import url="/footer.jsp"/>

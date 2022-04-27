@@ -55,7 +55,6 @@ img.logo {
 .card {
     text-align: center;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    /*border: aquamarine 1px solid;*/
     padding: 5px;
     margin: .5rem;
     border-radius: 10%;

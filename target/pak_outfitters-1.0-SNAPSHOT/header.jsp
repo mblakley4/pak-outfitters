@@ -12,7 +12,7 @@
     <nav>
         <ul>
             <li><a href="equipment">Available</a></li>
-            <li><a href="rentedEquipment.jsp">Rented</a></li>
+            <li><a href="rented">Rented</a></li>
         </ul>
     </nav>
 </header>
