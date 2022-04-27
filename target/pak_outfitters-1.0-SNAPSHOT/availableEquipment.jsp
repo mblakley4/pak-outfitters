@@ -6,12 +6,14 @@
 
 <div class="cards-container">
 <c:forEach var="item" items="${equipment_list}">
+    <a href="<c:url value='item?id=${item.getEquipment_id()}' />">
         <div class="card">
             <h2 class="title">${item.getTitle()}</h2>
             <img src="images/${item.getType()}.png" alt="equipment-image" class="pic" />
             <p class="description">${item.getDescription()}</p>
             <p class="price">$${item.getPrice()}</p>
         </div>
+    </a>
 </c:forEach>
 </div>
 

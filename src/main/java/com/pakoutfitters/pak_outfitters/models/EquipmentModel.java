@@ -7,13 +7,15 @@ public class EquipmentModel {
     String description;
     int price;
     String type;
+    Boolean available;
 
-    public EquipmentModel(int equipment_id, String title, String description, int price, String type) {
+    public EquipmentModel(int equipment_id, String title, String description, int price, String type, Boolean available) {
         this.equipment_id = equipment_id;
         this.title = title;
         this.description = description;
         this.price = price;
         this.type = type;
+        this.available = available;
     }
 
     public int getEquipment_id() {
@@ -55,4 +57,8 @@ public class EquipmentModel {
     public void setType(String type) {
         this.type = type;
     }
+
+    public Boolean getAvailable() { return available; }
+
+    public void setAvailable(Boolean available) { this.available = available; }
 }

@@ -2,7 +2,6 @@ package com.pakoutfitters.pak_outfitters.services;
 
 import com.pakoutfitters.pak_outfitters.models.EquipmentModel;
 import com.pakoutfitters.pak_outfitters.models.RentedEquipmentModel;
-import org.xml.sax.SAXException;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ public class MySQLdb {
             int price = rs.getInt("price");
             String type = rs.getString("type");
 
-            EquipmentModel equipmentModel = new EquipmentModel(equipment_id, title, description, price, type);
+            EquipmentModel equipmentModel = new EquipmentModel(equipment_id, title, description, price, type, null);
 
             equipmentList.add(equipmentModel);
         }
@@ -78,5 +77,29 @@ public class MySQLdb {
         preparedStatement.close();
 
         return rentedEquipmentList;
+    }
+
+    public EquipmentModel getItem(int equipmentId) throws SQLException {
+        EquipmentModel item = null;
+
+        String query = "SELECT * FROM equipment WHERE id = '"+equipmentId+"'";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ResultSet rs = preparedStatement.executeQuery();
+
+        if (rs.next()) {
+            int equipment_id = rs.getInt("id");
+            String title = rs.getString("title");
+            String description = rs.getString("description");
+            int price = rs.getInt("price");
+            String type = rs.getString("type");
+            Boolean available = rs.getBoolean("available");
+
+            item = new EquipmentModel(equipment_id, title, description, price, type, available);
+        }
+        rs.close();
+        preparedStatement.close();
+
+        return item;
     }
 }

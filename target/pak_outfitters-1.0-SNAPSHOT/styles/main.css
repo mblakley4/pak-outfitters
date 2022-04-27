@@ -67,6 +67,10 @@ img.pic {
     width: 200px;
 }
 
+#error_msg {
+    color: red;
+}
+
 /*footer {*/
 /*    background-color: lightslategrey;*/
 /*    padding: 10vh 20px;*/
