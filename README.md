@@ -16,14 +16,16 @@ JSP Documents
 - Item
 - RentalForm
 - ReturnForm
-- RatingForm
+- AdminLogin
+- Status
 - Header
 
 ### Controllers:
 Java Servlets
-- GetEquipmentServlet
-- GetItemServlet
-- GetRentedEquipmentServlet
-- RentItemServlet
-- ReturnItemServlet
-- SubmitRatingServlet
+- Get Equipment Servlet
+- Get Item Servlet
+- Get Rented Equipment Servlet
+- Rent Equipment Servlet
+- Return Equipment Servlet
+- Admin Login Servlet
+- Admin Logout Serlet

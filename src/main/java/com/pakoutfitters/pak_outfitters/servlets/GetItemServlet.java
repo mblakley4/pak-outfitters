@@ -1,7 +1,6 @@
 package com.pakoutfitters.pak_outfitters.servlets;
 
 import com.pakoutfitters.pak_outfitters.models.EquipmentModel;
-import com.pakoutfitters.pak_outfitters.models.RentedEquipmentModel;
 import com.pakoutfitters.pak_outfitters.services.MySQLdb;
 
 import javax.servlet.*;
@@ -9,7 +8,6 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 @WebServlet(name = "GetItemServlet", value = "/item")
 public class GetItemServlet extends HttpServlet {
