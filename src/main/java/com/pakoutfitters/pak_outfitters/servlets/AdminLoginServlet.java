@@ -37,7 +37,7 @@ public class AdminLoginServlet extends HttpServlet {
            request.getRequestDispatcher("index.jsp").forward(request, response);
         } else {
             request.setAttribute("error", "Incorrect username or password..!!!");
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            request.getRequestDispatcher("status.jsp").forward(request, response);
         }
     }
 }
