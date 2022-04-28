@@ -128,8 +128,7 @@ public class MySQLdb {
         PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
         int rows_update = preparedStatement.executeUpdate();
 
-
-        if (rows_update > 1) {
+        if (rows_update == 1) {
             result = true;
         }
         preparedStatement.close();
@@ -144,12 +143,48 @@ public class MySQLdb {
 
         int rows_update1 = preparedStatement1.executeUpdate();
 
-        if (rows_update1 == 1) {
-            result = true;
-        } else {
+        if (rows_update1 != 1) {
             result = false;
         }
         preparedStatement.close();
+
+        return result;
+    }
+
+    public boolean returnItem(int rentalId, String dateReturned) throws SQLException {
+        boolean result = false;
+        int equipmentId = 0;
+
+        String query = "SELECT r.equipment_id FROM rented_equipment r WHERE id = '"+rentalId+"'";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ResultSet rs = preparedStatement.executeQuery(query);
+
+        if(rs.next()) {
+            equipmentId = rs.getInt("equipment_id");
+        }
+        rs.close();
+        preparedStatement.close();
+
+        String updateEquipment = "UPDATE equipment e SET e.available = 1 WHERE id = '"+equipmentId+"'";
+
+        PreparedStatement preparedStatement1 = connection.prepareStatement(updateEquipment);
+        int rows_update1 = preparedStatement1.executeUpdate();
+
+        if (rows_update1 == 1) {
+            result = true;
+        }
+        preparedStatement1.close();
+
+        String updateRentals = "UPDATE rented_equipment r SET r.date_returned = '"+dateReturned+"', r.returned = true WHERE id = '"+rentalId+"'";
+
+        PreparedStatement preparedStatement2 = connection.prepareStatement(updateRentals);
+        int rows_update2 = preparedStatement2.executeUpdate();
+
+        if (rows_update2 != 1) {
+            result = false;
+        }
+        preparedStatement2.close();
 
         return result;
     }

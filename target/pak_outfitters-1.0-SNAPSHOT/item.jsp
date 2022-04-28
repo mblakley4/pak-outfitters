@@ -12,9 +12,9 @@
     </c:if>
 
     <c:if test="${item.available == false}">
-        <form action="returnForm.jsp">
-            <input type="submit" value="Return item"/>
-        </form>
+        <a href="returnForm.jsp?id=${rental_id}&title=${item.title}">Return Item</a>
+        <br />
+        <br />
         <span>* must be an administrator to return items</span>
     </c:if>
 </p>

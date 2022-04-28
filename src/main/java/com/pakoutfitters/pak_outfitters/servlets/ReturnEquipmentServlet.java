@@ -1,4 +1,5 @@
 package com.pakoutfitters.pak_outfitters.servlets;
+
 import com.pakoutfitters.pak_outfitters.services.MySQLdb;
 
 import javax.servlet.*;
@@ -9,8 +10,8 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@WebServlet(name = "RentEquipmentServlet", value = "/rentEquipment")
-public class RentEquipmentServlet extends HttpServlet {
+@WebServlet(name = "ReturnEquipmentServlet", value = "/returnEquipment")
+public class ReturnEquipmentServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
@@ -18,21 +19,19 @@ public class RentEquipmentServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int rentalDays = Integer.parseInt(request.getParameter("rentalDays"));
-        int equipmentId = Integer.parseInt(request.getParameter("id"));
-
+        int rentalId = Integer.parseInt(request.getParameter("id"));
 
         LocalDateTime date = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String dateRented = date.format(formatter);
+        String dateReturned = date.format(formatter);
 
         MySQLdb db = MySQLdb.getInstance();
 
         try {
-            boolean result = db.rentItem(equipmentId, rentalDays, dateRented);
+            boolean result = db.returnItem(rentalId, dateReturned);
 
             if (result) {
-                request.setAttribute("message", "Your rental was succesful!");
+                request.setAttribute("message", "Your return was succesful!");
             } else {
                 request.setAttribute("message", "Something went wrong! Server error!");
             }

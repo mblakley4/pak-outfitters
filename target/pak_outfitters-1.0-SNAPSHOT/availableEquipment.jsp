@@ -4,6 +4,8 @@
 
 <c:import url="/header.jsp"/>
 
+<h2>Available Equipment</h2>
+
 <div class="cards-container">
 <c:forEach var="item" items="${equipment_list}">
     <a href="<c:url value='item?id=${item.getEquipment_id()}' />">
