@@ -1,5 +1,6 @@
 package com.pakoutfitters.pak_outfitters.services;
 
+import com.pakoutfitters.pak_outfitters.models.AdminModel;
 import com.pakoutfitters.pak_outfitters.models.EquipmentModel;
 import com.pakoutfitters.pak_outfitters.models.RentedEquipmentModel;
 
@@ -28,6 +29,22 @@ public class MySQLdb {
             instance = new MySQLdb();
         }
         return instance;
+    }
+
+    public AdminModel login (String userName, String password) throws SQLException {
+        AdminModel adminModel = null;
+
+        String query = "SELECT user_name FROM admin WHERE user_name = '"+ userName +"' AND password = '"+ password +"'";
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        ResultSet rs = preparedStatement.executeQuery(query);
+
+        if(rs.next()) {
+            String username = rs.getString("user_name");
+            adminModel = new AdminModel(username);
+        }
+        rs.close();
+        preparedStatement.close();
+        return adminModel;
     }
 
     public List<EquipmentModel> getEquipment() throws SQLException {
