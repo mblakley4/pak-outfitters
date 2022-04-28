@@ -5,14 +5,16 @@
 <c:import url="/header.jsp"/>
 
 <%
-    String title = (String) request.getParameter("title");
+    int equipmentId =  Integer.parseInt(request.getParameter("id"));
     String price = (String) request.getParameter("price");
+    String title = (String) request.getParameter("title");
+
 %>
 
 <h2><%=title %></h2>
 <p>$<%=price%></p>
 
-<form action="rentEquipment" method="post" onsubmit="return validate()">
+<form action="rentEquipment?id=<%=equipmentId%>" method="post" onsubmit="return validate()">
     <p>Enter the number of days you want to rent the equipment.</p>
 
     Number of days:<input type="text" id="rentalDays" name="rentalDays"><br />

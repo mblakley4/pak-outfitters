@@ -8,7 +8,7 @@
 
 <p class="item-action-container">
     <c:if test="${item.available == true}">
-        <a href="rentalForm.jsp?title=${item.title}&price=${item.price}">Rent Item</a>
+        <a href="rentalForm.jsp?id=${item.equipment_id}&title=${item.title}&price=${item.price}">Rent Item</a>
     </c:if>
 
     <c:if test="${item.available == false}">

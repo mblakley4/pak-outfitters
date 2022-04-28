@@ -102,4 +102,38 @@ public class MySQLdb {
 
         return item;
     }
+
+    public boolean rentItem(int equipmentId, int rentalDays, String dateRented) throws SQLException {
+        boolean result = false;
+
+        String updateQuery = "UPDATE equipment e SET e.available = 0 WHERE id = '"+equipmentId+"'";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
+        int rows_update = preparedStatement.executeUpdate();
+
+
+        if (rows_update > 1) {
+            result = true;
+        }
+        preparedStatement.close();
+
+        String qRentItem = "INSERT INTO rented_equipment (equipment_id, date_rented, days_rented, returned) VALUES(?, ?, ?, ?)";
+
+        PreparedStatement preparedStatement1 = connection.prepareStatement(qRentItem);
+        preparedStatement1.setInt(1, equipmentId);
+        preparedStatement1.setString(2, dateRented);
+        preparedStatement1.setInt(3, rentalDays);
+        preparedStatement1.setBoolean(4, false);
+
+        int rows_update1 = preparedStatement1.executeUpdate();
+
+        if (rows_update1 == 1) {
+            result = true;
+        } else {
+            result = false;
+        }
+        preparedStatement.close();
+
+        return result;
+    }
 }

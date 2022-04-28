@@ -22,19 +22,16 @@ public class GetItemServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int equipment_id = Integer.parseInt(request.getParameter("id"));
 
-        HttpSession session = request.getSession();
         MySQLdb db = MySQLdb.getInstance();
 
-        if(session != null) {
-            try {
-                EquipmentModel item = db.getItem(equipment_id);
-                request.setAttribute("item", item);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("item.jsp");
-            requestDispatcher.forward(request, response);
+        try {
+            EquipmentModel item = db.getItem(equipment_id);
+            request.setAttribute("item", item);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("item.jsp");
+        requestDispatcher.forward(request, response);
     }
 }

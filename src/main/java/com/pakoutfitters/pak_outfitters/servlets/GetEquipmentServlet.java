@@ -19,19 +19,16 @@ public class GetEquipmentServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
         MySQLdb db = MySQLdb.getInstance();
 
-        if(session != null) {
-            try {
-                List<EquipmentModel> equipmentList = db.getEquipment();
-                request.setAttribute("equipment_list", equipmentList);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("availableEquipment.jsp");
-            requestDispatcher.forward(request, response);
+        try {
+            List<EquipmentModel> equipmentList = db.getEquipment();
+            request.setAttribute("equipment_list", equipmentList);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("availableEquipment.jsp");
+        requestDispatcher.forward(request, response);
     }
 }

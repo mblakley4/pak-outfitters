@@ -5,14 +5,16 @@
 <c:import url="/header.jsp"/>
 
 <%
-    String title = (String) request.getParameter("title");
+    int equipmentId =  Integer.parseInt(request.getParameter("id"));
     String price = (String) request.getParameter("price");
+    String title = (String) request.getParameter("title");
+
 %>
 
 <h2><%=title %></h2>
 <p>$<%=price%></p>
 
-<form action="rentEquipment" method="post" onsubmit="return validate()">
+<form action="rentEquipment?id=<%=equipmentId%>" method="post" onsubmit="return validate()">
     <p>Enter the number of days you want to rent the equipment.</p>
 
     Number of days:<input type="text" id="rentalDays" name="rentalDays"><br />
@@ -33,7 +35,6 @@
         .addEventListener('keyup', () => displayFeedback());
 
     const calculatePrice = () => {
-        console.log('calc')
         document.getElementById("error_msg").innerHTML = "";
         const days = document.getElementById("rentalDays").value;
         const itemPrice = '<%=price%>'
@@ -45,8 +46,6 @@
         const days = +document.getElementById("rentalDays").value;
 
         const VALIDATED = true;
-
-        console.log(days, typeof(days))
 
         if (!days || typeof(days) !== "number") {
             document.getElementById("error_msg").innerHTML = "Please enter a number.";
